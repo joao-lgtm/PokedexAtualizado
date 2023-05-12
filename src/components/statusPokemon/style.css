@@ -1,0 +1,156 @@
+.progress-bar {
+    width: 400px;
+    height: 5px;
+    background-color: #ddd;
+    position: relative;
+    border-radius: 15px;
+  }
+  
+  .progress-bar-inner-hp{
+    height: 100%;
+    position: absolute;
+    border-radius: 15px;
+    
+  }
+
+  .progress-bar-inner-attack{
+    height: 100%;
+    position: absolute;
+    border-radius: 15px;
+  }
+  .progress-bar-inner-defense{
+    height: 100%;
+    position: absolute;
+    border-radius: 15px;
+  }
+  .progress-bar-inner-special-attack{
+    height: 100%;
+    position: absolute;
+    border-radius: 15px;
+
+  }
+  .progress-bar-inner-special-defense{
+    height: 100%;
+    position: absolute;
+    
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .progress-bar-inner-speed{
+    height: 100%;
+    position: absolute;
+    border-radius: 15px;
+    
+
+  }
+
+.name-stats{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.text-stats{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+.text-left{
+  padding-left: 10px;
+}
+.stat{
+  margin-bottom: 10px;
+}
+.stats{
+  padding-left: 10px;
+}
+
+.progress-bar-inner-hp::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 0, 0);
+  border-radius: 15px;
+  animation: progress 0.5s  linear;
+}
+
+
+.progress-bar-inner-attack::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 115, 0);
+  border-radius: 15px;
+  animation: progress 0.5s linear; 
+}
+
+.progress-bar-inner-defense::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 26, 255);
+  border-radius: 15px;
+  animation: progress 0.5s  linear; 
+}
+
+
+.progress-bar-inner-special-attack::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(117, 0, 250);
+  border-radius: 15px;
+  animation: progress 0.5s  linear; 
+}
+
+
+.progress-bar-inner-special-defense::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 136, 160);
+  border-radius: 15px;
+  animation: progress 0.5s  linear; 
+}
+
+
+.progress-bar-inner-speed::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 162, 202);
+  border-radius: 15px;
+  animation: progress 0.5s  linear; 
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

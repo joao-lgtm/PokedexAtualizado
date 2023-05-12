@@ -1,0 +1,42 @@
+.modal{
+    position: fixed !important;
+    height: 100vh !important;
+    width: 100vw !important;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    
+    
+}
+.tet{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: aliceblue;
+    opacity: 0.5;
+    top: 0;
+}
+
+.close{
+    position: absolute;
+}
+
+.back-arrow{
+    width: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    
+}
+
+.modal-content {
+    position: absolute;
+    z-index: 1;
+    border-radius: 40px;
+    background-image: url(/src/assets/pokeball.svg);
+    background-repeat: no-repeat;
+    background-size: 300px;
+    background-position-x: 240px;
+    background-position-y: 50px;
+    height: 87%;
+}
+

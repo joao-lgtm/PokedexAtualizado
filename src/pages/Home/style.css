@@ -1,0 +1,17 @@
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    
+}
+.container-pokemon ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.container-pokemon ul li{
+    padding: 10px;
+}

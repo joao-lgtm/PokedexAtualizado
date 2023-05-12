@@ -1,0 +1,15 @@
+
+.cabecalho{
+    background-color: red ;
+    position: relative;    
+    display: flex;
+    justify-content: center;
+}
+
+.cabecalho span{
+    font-family: 'Pokemon solid', sans-serif;
+    font-size: 2.5rem;
+    color: #FAC705;
+    text-stroke: 2px #3D64B8;
+  -webkit-text-stroke: 2px #3D64B8;
+}
