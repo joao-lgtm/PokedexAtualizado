@@ -27,26 +27,25 @@
   border-radius: 40px;
 }
 .menu-info{
-  width: 50%;
+  width: 85%;
   margin: 10px;
 }
 .menu-info ul{
   list-style: none;
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-content: flex-start;
 }
 .info-pokemon ul li{
   padding: 10px 0px 10px 0px ;
 }
 .sprite-img{
-  width: 300px;
-
+  width: 18.75rem;
 }
 
 .type-img{
-    width: 70px;
+    width: 4.375rem;
 }
 
 .type{

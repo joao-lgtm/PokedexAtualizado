@@ -2,7 +2,7 @@ import './style.css'
 import React, { useState,useEffect } from 'react'
 import { Modal } from '../../components/modal';
 
-export function ListPokemon({id,name, sprit}){
+export function ListPokemon({id,name, sprite}){
     const [modalOpen, setModalOpen] = useState();
 
     function openModal() {
@@ -17,7 +17,7 @@ export function ListPokemon({id,name, sprit}){
             <li className='list-pokemon' >
               <div>
                 <div onClick={openModal} >
-                    <img src={sprit}/>
+                    <img src={sprite}/>
                     <p>{id}</p>
                     <p>{name}</p>  
                 </div>

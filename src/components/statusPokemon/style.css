@@ -1,3 +1,26 @@
+
+.name-stats{
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  padding: auto;
+}
+
+.text-stats{
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+.text-left{
+  padding-left: 10px;
+}
+.stats{
+  padding-left: 10px;
+}
+
+
 .progress-bar {
     width: 400px;
     height: 5px;
@@ -32,42 +55,13 @@
   .progress-bar-inner-special-defense{
     height: 100%;
     position: absolute;
-    
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .progress-bar-inner-speed{
     height: 100%;
     position: absolute;
     border-radius: 15px;
     
-
-  }
-
-.name-stats{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-}
-
-.text-stats{
-  width: 150px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 10px;
-}
-.text-left{
-  padding-left: 10px;
-}
-.stat{
-  margin-bottom: 10px;
-}
-.stats{
-  padding-left: 10px;
 }
 
 .progress-bar-inner-hp::before {

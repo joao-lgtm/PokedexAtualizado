@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './style.css';
 import { ListPokemon } from '../../components/listPokemon';
@@ -10,27 +10,27 @@ export function Home() {
 
   useEffect(() => {
     setIsLoading(true);
-    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonDisplayCount}`)
-      .then(response => {
+
+    const fetchPokemon = async () => {
+      try {
+        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonDisplayCount}`);
         const requests = response.data.results.map(result => axios.get(result.url));
-        Promise.all(requests)
-          .then(responses => {
-            const newPokemonList = responses.map(response => {
-              const { id, name, sprites } = response.data;
-              return { id, name, sprites };
-            });
-            setPokemonList(newPokemonList);
-            setIsLoading(false);
-          })
-          .catch((err) => {
-            console.log(err);
-            setIsLoading(false);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
+        const responses = await Promise.all(requests);
+
+        const newPokemonList = responses.map(response => {
+          const { id, name, sprites } = response.data;
+          return { id, name, sprites };
+        });
+
+        setPokemonList(newPokemonList);
         setIsLoading(false);
-      });
+      } catch (error) {
+        console.error(error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchPokemon();
   }, [pokemonDisplayCount]);
 
   return (
@@ -38,7 +38,7 @@ export function Home() {
       <div className="container-pokemon">
         <ul>
           {pokemonList.map(pokemon => (
-            <ListPokemon key={pokemon.id} id={pokemon.id} name={pokemon.name} sprit={pokemon.sprites.front_default}/>
+            <ListPokemon key={pokemon.id} id={pokemon.id} name={pokemon.name} sprite={pokemon.sprites.front_default}/>
           ))}
         </ul>
         {isLoading && <p>Carregando...</p>}

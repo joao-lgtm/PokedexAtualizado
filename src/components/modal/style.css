@@ -1,6 +1,6 @@
 .modal{
     position: fixed !important;
-    height: 100vh !important;
+    height: 95vh !important;
     width: 100vw !important;
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@
     background-image: url(/src/assets/pokeball.svg);
     background-repeat: no-repeat;
     background-size: 300px;
-    background-position-x: 240px;
+    background-position-x: center;
     background-position-y: 50px;
     height: 87%;
 }

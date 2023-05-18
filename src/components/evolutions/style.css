@@ -1,0 +1,8 @@
+.evolutions{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: center;
+    margin: 10px;
+}

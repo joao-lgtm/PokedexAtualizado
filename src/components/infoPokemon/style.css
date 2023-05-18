@@ -6,15 +6,14 @@
 
 .weight-and-height{
     width: 100%;
+
 }
 
 .weight-and-height div{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    /* margin-top: 30px; */
-    padding: 20px;
-
+    padding: 15px;
 }
 
 

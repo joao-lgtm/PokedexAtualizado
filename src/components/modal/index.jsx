@@ -10,9 +10,10 @@ export function Modal({ onClose ,id}) {
   async function getPokemon(id) {
     try {
       const { data } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const   req   = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
+      const   response = await axios.get(req.data.evolution_chain.url);
       const { data: species } = await axios.get(data.species.url);
-      console.log(species,'species');
-      console.log(data,'data')
+      // console.log(response,'req');
       let color;
       switch (species.color.name) {
             case 'white':
@@ -59,6 +60,9 @@ export function Modal({ onClose ,id}) {
         isLegendary: species.is_legendary,
         isMythical: species.is_mythical,
         color: color,
+        method_evolution: response.data,
+        evolves_from: req.data.evolves_from_species,
+        varieties: req.data.varieties
       });
     } catch (error) {
       console.error(error);
@@ -72,6 +76,7 @@ export function Modal({ onClose ,id}) {
 
   return (
     <div className="modal">
+      <div className='tet'></div>
       <div className="modal-content" style={{backgroundColor: `${pokemon.color}` }}>
         <div className="container-card">
           <div className='close'>
@@ -82,8 +87,7 @@ export function Modal({ onClose ,id}) {
             </div>
           {pokemon.name && <Card {...pokemon} key={pokemon.name} />}
         </div>
-      </div>
-      <div className='tet'></div>
+      </div> 
     </div>
   );
 }
