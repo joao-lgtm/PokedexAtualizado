@@ -9,7 +9,8 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
   const [images, setImages]             = useState([]);
   const [forms, setForms]               = useState([]);
   const [imagesForms, setImagesForms]   = useState([]);
-  const [itemImageUrl, setItemImageUrl] = useState(null);
+  const [imagensItens, setimagensItens]   = useState();
+
 
 
   useEffect(() => {
@@ -115,6 +116,18 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
           evolutionInitialFilter[1][1]?.name ? evolutionInitialFilter[1][1]?.name : evolutionInitialFilter[1][1] ?  evolutionInitialFilter[1][1] : "aqui"
       ];
 
+    if(evolutionArray1[0] === "item"){
+      const name = evolutionArray1[1]
+      const url = `https://pokeapi.co/api/v2/item/${name}/`
+      axios.get(url)
+      .then(response => {
+         const data = response.data.sprites.default
+        setimagensItens({
+          url: data
+        })
+      })
+      .catch(err => { console.error(err) });}
+
       
     }
     if(evolutionMiddle != undefined){
@@ -127,6 +140,20 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       ];
     }
 
+    if(evolutionArray2[0] === "item"){
+      const name = evolutionArray2[1]
+      const url = `https://pokeapi.co/api/v2/item/${name}/`
+      axios.get(url)
+      .then(response => {
+         const data = response.data.sprites.default
+         console.log(data)
+        setimagensItens({
+          url: data
+        })
+      })
+      .catch(err => 
+        { console.error(err) });}
+
     if(evolutionFinal != undefined){
       const evolutionFinalObject = Object.entries(evolutionFinal)
       const evolutionFinalFilter = evolutionFinalObject.filter(itens => itens[1] != null && itens[1] != false)
@@ -136,6 +163,17 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
         evolutionFinalFilter[0][1]?.name ? evolutionFinalFilter[0][1]?.name : evolutionFinalFilter[0][1] ?  evolutionFinalFilter[0][1] : "aqui",
         evolutionFinalFilter[1] ? evolutionFinalFilter[1][1]?.name ? evolutionFinalFilter[1][1]?.name : evolutionFinalFilter[1][1] ?  evolutionFinalFilter[1][1] : "aqui" : ""
       ];
+      if(evolutionArray3[0] === "item"){
+        const name = evolutionArray3[1]
+        const url = `https://pokeapi.co/api/v2/item/${name}/`
+        axios.get(url)
+        .then(response => {
+           const data = response.data.sprites.default
+          setimagensItens({
+            url: data
+          })
+        })
+        .catch(err => { console.error(err) });}
     }
 
     setMethodLevels([
@@ -144,26 +182,12 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       evolutionArray3 ? evolutionArray3 : "null"
     ]);
     
-
+    
+    
     
     }
   }, [method_evolution, varieties]);
 
-  function getImagesItens(name) {
-    const url = `https://pokeapi.co/api/v2/item/${name}/`;
-  
-    return axios
-      .get(url)
-      .then(response => {
-        const data = response.data;
-        setItemImageUrl(data.sprites.default)
-        return itemImageUrl
-      })
-      .catch(error => {
-        console.error(error);
-        throw error;
-      });
-  }
 
   const filterEvolution = evolution.filter(evolution => evolution != 'null');
   return (
@@ -181,17 +205,17 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
 
              {index !== filterEvolution.length - 1 && index === 0 &&<div className="level-and-requirements">
               <span>{methodLevels[0][0]}</span>
-              <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" ? <img src={getImagesItens(methodLevels[0][1])}/>: methodLevels[0][1]}</span>
+              <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" ? imagensItens && <div><img src={imagensItens.url} alt='imagem itens'/> <span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
               <span>{methodLevels[0][2]} </span>
              </div>}
              {index !== filterEvolution.length - 1 &&  index === 1 && <div className="level-and-requirements">
              <span>{methodLevels[1][0]}</span>
-              <span>{methodLevels[1][1]}</span>
+              <span>{methodLevels[1][2]  === "dark" ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === "gender" ? methodLevels[1][1] == 2 ? "Man" : "feminino": methodLevels[1][0] === "item" ?imagensItens && <div><img src={imagensItens.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
               <span>{methodLevels[1][2]} </span>
               </div>}
               {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 2 && <div className="level-and-requirements">
              <span>{methodLevels[2][0]}</span>
-              <span>{methodLevels[2][2]  === "dark" ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === "gender" ? methodLevels[2][1] == 2 ? "Man" : "feminino": methodLevels[2][0] === "item" ? getImagesItens(methodLevels[2][1]) : methodLevels[2][1]}</span>
+              <span>{methodLevels[2][2]  === "dark" ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === "gender" ? methodLevels[2][1] == 2 ? "Man" : "feminino": methodLevels[2][0] === "item" ?imagensItens && <div><img src={imagensItens.url} alt='imagem itens'/> <span>{methodLevels[2][1]}</span></div> : methodLevels[2][1]}</span>
               <span>{methodLevels[2][2]} </span>
               </div>}
               {name === "eevee" && (
