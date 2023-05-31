@@ -193,11 +193,15 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
     }
   }, [method_evolution, varieties]);
 
-console.log(methodLevels)
   const filterEvolution = evolution.filter(evolution => evolution != 'null');
+
+
+
   return (
     <div className="evolutions-and-forms">
       <div className="evolutions">
+        <h3>evolutions</h3>
+        <div style={{display: 'flex'}}>
         {filterEvolution
           .map((name, index) => (
             <React.Fragment key={index}>
@@ -205,49 +209,58 @@ console.log(methodLevels)
                 <img style={{ width: "80px" }} src={images[index]} alt={name} />
                 <span>{name}</span>
               </div>
-              
-             {index !== filterEvolution.length - 1 && name !== "eevee" && <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />}
-
-             {index !== filterEvolution.length - 1 && index === 0 &&<div className="level-and-requirements">
-              <span>{methodLevels[0][0]}</span>
-              <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" ? imagensItens1 && <div><img src={imagensItens1.url} alt='imagem itens'/> <span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
-              <span>{methodLevels[0][2]} </span>
-             </div>}
-             {index !== filterEvolution.length - 1 &&  index === 1 && <div className="level-and-requirements">
-             <span>{methodLevels[1][0]}</span>
-              <span>{methodLevels[1][2]  === "dark" ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === "gender" ? methodLevels[1][1] == 2 ? "Man" : "feminino": methodLevels[1][0] === "item" ?imagensItens2 && <div><img src={imagensItens2.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
-              <span>{methodLevels[1][2]} </span>
-              </div>}
-              {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 2 && <div className="level-and-requirements">
-             <span>{methodLevels[2][0]}</span>
-              <span>{methodLevels[2][2]  === "dark" ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === "gender" ? methodLevels[2][1] == 2 ? "Man" : "feminino": methodLevels[2][0] === "item" ?imagensItens3 && <div><img src={imagensItens3.url} alt='imagem itens'/> <span>{methodLevels[2][1]}</span></div> : methodLevels[2][1]}</span>
-              <span>{methodLevels[2][2]} </span>
-              </div>}
-              {name === "eevee" && (
+             {index !== filterEvolution.length - 1 && index === 0 &&
+                <>
                 <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
-              )}
+                <div className="level-and-requirements">
+                      <span>{methodLevels[0][0]}</span>
+                      <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" ? imagensItens1 && <div className="img-itens"><img src={imagensItens1.url} alt='imagem itens'/> <span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
+                      <span>{methodLevels[0][2]} </span>
+                </div>
+                </>
+             }
+             {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 1 &&
+                <>
+                  <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
+                  <div className="level-and-requirements">
+                      <span>{methodLevels[1][0]}</span>
+                      <span>{methodLevels[1][2]  === "dark" ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === "gender" ? methodLevels[1][1] == 2 ? "Man" : "feminino": methodLevels[1][0] === "item" ?imagensItens2 && <div className="img-itens"><img src={imagensItens2.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
+                      <span>{methodLevels[1][2]}</span>
+                  </div>
+                  </>
+              }
+              {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 2 &&
+              <>
+              <h3> or </h3>
+              <div className="level-and-requirements">
+                  <span>{methodLevels[2][0]}</span>
+                  <span>{methodLevels[2][2]  === "dark" ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === "gender" ? methodLevels[2][1] == 2 ? "Man" : "feminino": methodLevels[2][0] === "item" ?imagensItens3 && <div className="img-itens"><img src={imagensItens3.url} alt='imagem itens'/> <span>{methodLevels[2][1]}</span></div> : methodLevels[2][1]}</span>
+                  <span>{methodLevels[2][2]} </span>
+              </div>
+              </>
+              }
             </React.Fragment>
-            
           ))}
-    
-     
-    
+          </div>
       </div> 
       
        
-
-
       
-      <div className="forms">
-        {forms.map((form, index) =>
-          form !== "null" && form !== undefined ? (
-            <div className="mini-card" key={index}>
-              <img style={{ width: "90px" }} src={imagesForms[index]} alt={form} />
-              <span>{form}</span>
+      {forms && forms[0] != undefined &&
+          <div className="forms">
+            <h3>Forms</h3>
+              <div style={{display: 'flex'}}>
+                    {forms.map((form, index) =>
+                      form !== "null" && form !== undefined ? (
+                        <div className="mini-card" key={index}>
+                          <img style={{ width: "90px" }} src={imagesForms[index]} alt={form} />
+                          <span>{form}</span>
+                        </div>
+                      ) : null
+                    )}
+                </div>
             </div>
-          ) : null
-        )}
-      </div>
+        }
     </div>
   );
 }
