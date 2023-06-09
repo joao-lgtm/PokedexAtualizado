@@ -12,13 +12,8 @@
     height: 100%;
 }
 
-.menu-info{
-    display: flex;
-    flex-direction: row;
-}
 .info-pokemon{
   background-color: #ffffff;
-  height: 100%;
   display:flex;
   flex-direction: column;
   width: 100%;
@@ -29,7 +24,10 @@
 .menu-info{
   width: 85%;
   margin: 10px;
+  display: flex;
+  flex-direction: row;
 }
+
 .menu-info ul{
   list-style: none;
   display: flex;
@@ -41,7 +39,7 @@
   padding: 10px 0px 10px 0px ;
 }
 .sprite-img{
-  width: 18.75rem;
+  width: 18rem;
 }
 
 .type-img{

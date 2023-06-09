@@ -112,14 +112,16 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       if(evolutionInitial != undefined){
       const EvolutionInitialObject = Object.entries(evolutionInitial)
       const evolutionInitialFilter = EvolutionInitialObject.filter(itens => itens[1] != null && itens[1] != false)
+      
       evolutionArray1 = [
           evolutionInitialFilter[0][0] ? evolutionInitialFilter[0][0] : "aqui",
           evolutionInitialFilter[0][1]?.name ? evolutionInitialFilter[0][1]?.name : evolutionInitialFilter[0][1] ?  evolutionInitialFilter[0][1] : "aqui",
-          evolutionInitialFilter[1][1]?.name ? evolutionInitialFilter[1][1]?.name : evolutionInitialFilter[1][1] ?  evolutionInitialFilter[1][1] : "aqui"
+          evolutionInitialFilter[1] != undefined ||  evolutionInitialFilter[1] != null ? evolutionInitialFilter[1][1]?.name ? evolutionInitialFilter[1][1]?.name : evolutionInitialFilter[1][1] ?  evolutionInitialFilter[1][1] : "null" : ""
       ];
-
+      console.log(evolutionArray1,'aqui')
     if(evolutionArray1[0] === "item"){
       const name = evolutionArray1[1]
+      
       const url = `https://pokeapi.co/api/v2/item/${name}/`
       axios.get(url)
       .then(response => {
@@ -127,8 +129,20 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
         setimagensItens1({
           url: data
         })
+        
       })
       .catch(err => { console.error(err) });}
+      else if(evolutionArray1[0] === "held_item" && evolutionArray1[0] != undefined){
+        const name = evolutionArray1[1]
+        const url = `https://pokeapi.co/api/v2/item/${name}/`
+        axios.get(url)
+        .then(response => {
+           const data = response.data.sprites.default
+          setimagensItens1({
+            url: data
+          })
+        })
+        .catch(err => { console.error(err) });}
 
       
     }
@@ -179,6 +193,17 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
           })
         })
         .catch(err => { console.error(err) });}
+        else if(evolutionArray3[0] === "held_item" && evolutionArray3[0] != undefined){
+          const name = evolutionArray3[1]
+          const url = `https://pokeapi.co/api/v2/item/${name}/`
+          axios.get(url)
+          .then(response => {
+             const data = response.data.sprites.default
+            setimagensItens3({
+              url: data
+            })
+          })
+          .catch(err => { console.error(err) });}
     }
 
     setMethodLevels([
@@ -201,44 +226,46 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
     <div className="evolutions-and-forms">
       <div className="evolutions">
         <h3>evolutions</h3>
-        <div style={{display: 'flex'}}>
+        <div style={{display: 'flex' ,marginTop: '10px'}}>
         {filterEvolution
           .map((name, index) => (
             <React.Fragment key={index}>
               <div className="mini-card">
-                <img style={{ width: "80px" }} src={images[index]} alt={name} />
-                <span>{name}</span>
-              </div>
-             {index !== filterEvolution.length - 1 && index === 0 &&
-                <>
-                <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
-                <div className="level-and-requirements">
-                      <span>{methodLevels[0][0]}</span>
-                      <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" ? imagensItens1 && <div className="img-itens"><img src={imagensItens1.url} alt='imagem itens'/> <span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
-                      <span>{methodLevels[0][2]} </span>
+                <div className="Name">
+                  <img style={{ width: "80px" }} src={images[index]} alt={name} />
+                  <span>{name}</span>
                 </div>
-                </>
+             {index !== filterEvolution.length - 1 && index === 0 &&
+             <div style={{display: 'flex', flexDirection: 'column' ,alignItems:'center'}}>
+             <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
+              <div className="level-and-requirements">
+                <span>{methodLevels[0][0]}</span>
+                <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" || methodLevels[0][0] === "held_item" ? imagensItens1 && <div className="img-itens"><img src={imagensItens1.url} alt='imagem itens'/><span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
+                <span>{methodLevels[0][2] === "use-item" ? "" :methodLevels[0][2]} </span>
+              </div>
+              </div>
              }
              {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 1 &&
-                <>
-                  <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
-                  <div className="level-and-requirements">
-                      <span>{methodLevels[1][0]}</span>
-                      <span>{methodLevels[1][2]  === "dark" ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === "gender" ? methodLevels[1][1] == 2 ? "Man" : "feminino": methodLevels[1][0] === "item" ?imagensItens2 && <div className="img-itens"><img src={imagensItens2.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
-                      <span>{methodLevels[1][2]}</span>
-                  </div>
-                  </>
+             <div style={{display: 'flex', flexDirection: 'column' ,alignItems:'center'}}>
+              <img style={{ width: "30px"}} src={arrow_forwards} alt="arrow" />
+              <div className="level-and-requirements">
+                <span>{methodLevels[1][0]}</span>
+                <span>{methodLevels[1][2]  === "dark" ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === "gender" ? methodLevels[1][1] == 2 ? "Man" : "feminino": methodLevels[1][0] === "item" || methodLevels[1][0] === "held_item"? imagensItens2 && <div className="img-itens"><img src={imagensItens2.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
+                <span>{methodLevels[1][2]  === "use-item" ? "" :methodLevels[1][2]}</span>
+              </div>
+              </div>
               }
               {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 2 &&
-              <>
-              <h3> or </h3>
+              <div style={{display: 'flex', flexDirection: 'column' ,alignItems:'center'}}>
+              <h3>or</h3>
               <div className="level-and-requirements">
-                  <span>{methodLevels[2][0]}</span>
-                  <span>{methodLevels[2][2]  === "dark" ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === "gender" ? methodLevels[2][1] == 2 ? "Man" : "feminino": methodLevels[2][0] === "item" ?imagensItens3 && <div className="img-itens"><img src={imagensItens3.url} alt='imagem itens'/> <span>{methodLevels[2][1]}</span></div> : methodLevels[2][1]}</span>
-                  <span>{methodLevels[2][2]} </span>
+                <span>{methodLevels[2][0]}</span>
+                <span>{methodLevels[2][2]  === "dark" ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === "gender" ? methodLevels[2][1] == 2 ? "Man" : "feminino": methodLevels[2][0] === "item"  || methodLevels[2][0] === "held_item"  ?imagensItens3 && <div className="img-itens"><img src={imagensItens3.url} alt='imagem itens'/> <span>{methodLevels[2][1]}</span></div> : methodLevels[2][1]}</span>
+                <span>{methodLevels[2][2] === "use-item" ? "" :methodLevels[2][2]} </span>
               </div>
-              </>
+              </div>
               }
+              </div>
             </React.Fragment>
           ))}
           </div>
@@ -249,13 +276,16 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       {forms && forms[0] != undefined &&
           <div className="forms">
             <h3>Forms</h3>
-              <div style={{display: 'flex'}}>
+              <div className="forms-container">
                     {forms.map((form, index) =>
                       form !== "null" && form !== undefined ? (
-                        <div className="mini-card" key={index}>
-                          <img style={{ width: "90px" }} src={imagesForms[index]} alt={form} />
-                          <span>{form}</span>
+                        <div className="card-forms" key={index}>
+                          <div className="Name">
+                            <img style={{ width: "90px" }} src={imagesForms[index]} alt={form} />
+                            <span>{form}</span>
+                          </div>
                         </div>
+                        
                       ) : null
                     )}
                 </div>
