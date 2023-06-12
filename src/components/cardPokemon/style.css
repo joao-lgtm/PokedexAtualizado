@@ -20,6 +20,7 @@
   align-items: center;
   color: black;
   border-radius: 40px;
+  height: 100%;
 }
 .menu-info{
   width: 85%;
