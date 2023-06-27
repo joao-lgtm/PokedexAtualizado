@@ -15,14 +15,10 @@ export function ListPokemon({id,name, sprite}){
     return(
         <>
             <li className='list-pokemon' >
-              <div>
-                <div onClick={openModal} >
+                <div className= 'list-card' onClick={openModal} >
                     <img src={sprite}/>
-                    <p>{id}</p>
-                    <p>{name}</p>  
+                   <div><span>{id} -</span> <span>{name}</span></div>
                 </div>
-                
-              </div>
             </li>     
             {modalOpen && <Modal onClose={onClose} id={id}/>}   
             </>

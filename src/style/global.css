@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 :root {
 	--dark: #292C35;
 	--light: #F1F1F1;
@@ -17,11 +18,12 @@ body{
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+    font-family: 'Quicksand', sans-serif;
     background-color: black;
 }
 
 #root{
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     color: black;
 }

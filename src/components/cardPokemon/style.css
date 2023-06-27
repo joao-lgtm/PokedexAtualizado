@@ -19,11 +19,12 @@
   width: 100%;
   align-items: center;
   color: black;
-  border-radius: 40px;
+  border-radius: 2.5rem;
   height: 100%;
 }
 .menu-info{
-  width: 85%;
+  margin-top: 1.25rem;
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -36,19 +37,22 @@
   align-content: flex-start;
 }
 .info-pokemon ul li{
-  padding: 10px 0px 10px 0px ;
+  padding: 0.625rem 0rem 0.625rem 0rem ;
 }
 .sprite-img{
   width: 18rem;
 }
 
-.type-img{
-    width: 4.375rem;
+.type{
+  margin-top: 1.25rem;
+  display: flex;
 }
 
-.type{
-  margin-top: 10px;
+.type-img{
+    width: 4.375rem;
+    
 }
+
 
 .abilities-text{
   width: 100%;
@@ -58,7 +62,7 @@
 }
 
 .abilities-text span{
-  font-size: 20px;
-  margin-left: 10px;
+  font-size: 1.25rem;
+  margin-left: 0.625rem;
 }
 

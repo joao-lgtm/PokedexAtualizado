@@ -63,18 +63,6 @@ export function Card({
         />
       );
     }
-    else if (sinal === 5) {
-      return (
-        <Info
-          key={name}
-          weight={weight}
-          height={height}
-          abilities={abilities}
-          isLegendary={isLegendary}
-          isMythical={isMythical}
-        />
-      );
-    }
   }
 
   return (
@@ -107,9 +95,6 @@ export function Card({
                 evolution & Forms
               </li>
               <li value={4} onClick={e => setSinal(e.target.value)}>
-                moves
-              </li>
-              <li value={5} onClick={e => setSinal(e.target.value)}>
                 names and text Pokedex
               </li>
             </ul>

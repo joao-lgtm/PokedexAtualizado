@@ -22,16 +22,16 @@
 }
 
 .back-arrow{
-    width: 30px;
-    margin-left: 20px;
-    margin-top: 20px;
+    width: 1.875rem;
+    margin-left: 1.25rem;
+    margin-top: 1.25rem;
     
 }
 
 .modal-content {
     position: fixed;
     z-index: 1;
-    border-radius: 40px;
+    border-radius: 2.5rem;
     background-image: url(/src/assets/pokeball.svg);
     background-repeat: no-repeat;
     background-size: 300px;
