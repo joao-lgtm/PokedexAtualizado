@@ -13,7 +13,7 @@ export function Modal({ onClose ,id}) {
       const   req   = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
       const   response = await axios.get(req.data.evolution_chain.url);
       const { data: species } = await axios.get(data.species.url);
-      // console.log(response,'req');
+      console.log(species,'req');
       let color;
       switch (species.color.name) {
             case 'white':
@@ -62,7 +62,8 @@ export function Modal({ onClose ,id}) {
         color: color,
         method_evolution: response.data,
         evolves_from: req.data.evolves_from_species,
-        varieties: req.data.varieties
+        varieties: req.data.varieties,
+        species: species.flavor_text_entries
       });
     } catch (error) {
       console.error(error);

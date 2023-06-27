@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Status } from '../statusPokemon';
 import { Info } from '../infoPokemon';
 import { EvolutionAndForms } from './../evolutions/index';
+import { TextFromPokedex } from '../textFrompokedex';
 
 export function Card({
   id,
@@ -19,7 +20,8 @@ export function Card({
   color = '',
   method_evolution,
   evolves_from,
-  varieties = []
+  varieties = [],
+  species
 }) {
   const [sinal, setSinal] = useState(1);
 
@@ -53,13 +55,9 @@ export function Card({
     }
     else if (sinal === 4) {
       return (
-        <Info
+        <TextFromPokedex
           key={name}
-          weight={weight}
-          height={height}
-          abilities={abilities}
-          isLegendary={isLegendary}
-          isMythical={isMythical}
+          species={species}
         />
       );
     }
