@@ -226,7 +226,7 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
     <div className="evolutions-and-forms">
       <div className="evolutions">
         <h3>evolutions</h3>
-        <div style={{display: 'flex' ,marginTop: '10px'}}>
+        <div className="evolution-container">
         {filterEvolution
           .map((name, index) => (
             <React.Fragment key={index}>
@@ -235,28 +235,32 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
                   <img style={{ width: "80px" }} src={images[index]} alt={name} />
                   <span>{name}</span>
                 </div>
-             {index !== filterEvolution.length - 1 && index === 0 &&
-             <div style={{display: 'flex', flexDirection: 'column' ,alignItems:'center'}}>
-             <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
+             
+              </div>
+              {index !== filterEvolution.length - 1 && index === 0 &&
+             <div style={{display: 'flex',alignItems:'center'}}>
+            
               <div className="level-and-requirements">
                 <span>{methodLevels[0][0]}</span>
                 <span>{methodLevels[0][2]  === "dark" ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === "gender" ? methodLevels[0][1] == 2 ? "Man" : "feminino": methodLevels[0][0] === "item" || methodLevels[0][0] === "held_item" ? imagensItens1 && <div className="img-itens"><img src={imagensItens1.url} alt='imagem itens'/><span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
                 <span>{methodLevels[0][2] === "use-item" ? "" :methodLevels[0][2]} </span>
               </div>
+               <img style={{ width: "30px" }} src={arrow_forwards} alt="arrow" />
               </div>
              }
              {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 1 &&
-             <div style={{display: 'flex', flexDirection: 'column' ,alignItems:'center'}}>
-              <img style={{ width: "30px"}} src={arrow_forwards} alt="arrow" />
+             <div style={{display: 'flex', alignItems:'center'}}>
+              
               <div className="level-and-requirements">
                 <span>{methodLevels[1][0]}</span>
                 <span>{methodLevels[1][2]  === "dark" ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === "gender" ? methodLevels[1][1] == 2 ? "Man" : "feminino": methodLevels[1][0] === "item" || methodLevels[1][0] === "held_item"? imagensItens2 && <div className="img-itens"><img src={imagensItens2.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
                 <span>{methodLevels[1][2]  === "use-item" ? "" :methodLevels[1][2]}</span>
               </div>
+              <img style={{ width: "30px"}} src={arrow_forwards} alt="arrow" />
               </div>
               }
               {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 2 &&
-              <div style={{display: 'flex', flexDirection: 'column' ,alignItems:'center'}}>
+              <div style={{display: 'flex',alignItems:'center'}}>
               <h3>or</h3>
               <div className="level-and-requirements">
                 <span>{methodLevels[2][0]}</span>
@@ -265,7 +269,6 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
               </div>
               </div>
               }
-              </div>
             </React.Fragment>
           ))}
           </div>

@@ -1,6 +1,7 @@
 .evolutions-and-forms{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 .Name{
     display: flex;
@@ -26,7 +27,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
 }
 
 
@@ -40,6 +40,7 @@
     align-items: center;
     flex-direction: column;
     margin: 10px;
+    width: 100%;
 }
 .card-forms{
     display: flex;
@@ -51,5 +52,12 @@
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.evolution-container{
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-evenly;
 }

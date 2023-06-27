@@ -17,7 +17,6 @@ export function Info({weight,height,abilities,isLegendary,isMythical}){
 
 
     return(
-        <div className="info">
                 <div className='weight-and-height'>
                     <div>
                     <span>Peso:</span> <span>{parseFloat(`${weight / 10}`).toFixed(2)}kg ({parseFloat(`${weight / 4.536}`).toFixed(2)} lbs)</span>
@@ -38,9 +37,7 @@ export function Info({weight,height,abilities,isLegendary,isMythical}){
                     </div>
                     <div>
                         <span>Mitico:</span>   <span>{isMythical ? 'Sim' : 'Não'}</span> 
-                    </div>
-                    
-                </div> 
-            </div>       
+                    </div>                
+                </div>   
     )
 }

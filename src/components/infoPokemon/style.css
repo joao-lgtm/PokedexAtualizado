@@ -1,19 +1,15 @@
-.info{
-    position: relative;
-    width: 80%;
-    display: flex;
-}
-
 .weight-and-height{
-    width: 100%;
-
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .weight-and-height div{
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 25px;
 }
 
 
