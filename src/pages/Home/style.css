@@ -15,3 +15,18 @@ main{
 .container-pokemon ul li{
     padding: 10px;
 }
+
+
+.Loading-content{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 50px;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.animation-Loading{
+    width: 200px;
+}

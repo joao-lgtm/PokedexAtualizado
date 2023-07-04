@@ -20,7 +20,7 @@ return (
            
             </div>
             {index !== filterEvolution.length - 1 && index === 0 &&
-           <div style={{display: 'flex',alignItems:'center'}}>
+           <div style={{display: 'flex',alignItems:'center', marginLeft:'30px', marginRight:'30px'}}>
           
             <div className="level-and-requirements">
               <span>{methodLevels[0][0]}</span>
@@ -31,7 +31,7 @@ return (
             </div>
            }
            {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 1 &&
-           <div style={{display: 'flex', alignItems:'center'}}>
+           <div style={{display: 'flex', alignItems:'center',marginLeft:'30px', marginRight:'30px'}}>
             
             <div className="level-and-requirements">
               <span>{methodLevels[1][0]}</span>
@@ -42,7 +42,7 @@ return (
             </div>
             }
             {index !== filterEvolution.length - 1 &&  name !== "eevee" &&  index === 2 &&
-            <div style={{display: 'flex',alignItems:'center'}}>
+            <div style={{display: 'flex',alignItems:'center', marginLeft:'20px', marginRight:'20px'}}>
             <h3>or</h3>
             <div className="level-and-requirements">
               <span>{methodLevels[2][0]}</span>

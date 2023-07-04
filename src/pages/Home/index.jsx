@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './style.css';
+import Lottie from 'lottie-react';
+import pokebalLoading from '../../assets/pokebalLoading.json'
 import { ListPokemon } from '../../components/listPokemon';
 
 export function Home() {
@@ -41,7 +43,7 @@ export function Home() {
             <ListPokemon key={pokemon.id} id={pokemon.id} name={pokemon.name} sprite={pokemon.sprites.front_default}/>
           ))}
         </ul>
-        {isLoading && <p>Carregando...</p>}
+        {isLoading && <div className="Loading-content" ><Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> </div>}
         {!isLoading && (
           <button onClick={() => setPokemonDisplayCount(pokemonDisplayCount + 50)}>
             Carregar mais

@@ -61,5 +61,5 @@
     display: flex;
     margin-top: 1.25rem;
     width: 100%;
-    justify-content: space-evenly;
+    justify-content: center;
 }

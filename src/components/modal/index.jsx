@@ -3,9 +3,12 @@ import React, { useEffect, useState } from 'react';
 import './style.css';
 import { Card } from '../../components/cardPokemon';
 import backArrow from '../../assets/arrow_back3.svg';
-
+import Lottie from 'lottie-react';
+import pokebalLoading from '../../assets/pokebalLoading.json'
 export function Modal({ onClose ,id}) {
   const [pokemon, setPokemon] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
 
   async function getPokemon(id) {
     try {
@@ -65,18 +68,25 @@ export function Modal({ onClose ,id}) {
         varieties: req.data.varieties,
         species: species.flavor_text_entries
       });
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   }
 
   useEffect(() => {
+    setIsLoading(true);
     // chama a função getPokemon com o id desejado
     getPokemon(id); // exemplo: id 25 é Pikachu
+    
   }, []);
 
   return (
-    <div className="modal">
+    <>
+    {isLoading && <div className="Loading-content" ><Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> </div>}
+    
+    {!isLoading && <div className="modal">
       <div className='tet'></div>
       <div className="modal-content" style={{backgroundColor: `${pokemon.color}` }}>
         <div className="container-card">
@@ -90,6 +100,8 @@ export function Modal({ onClose ,id}) {
         </div>
       </div> 
     </div>
+  }
+  </>
   );
 }
 
