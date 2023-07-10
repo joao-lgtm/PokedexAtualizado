@@ -118,7 +118,6 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
           evolutionInitialFilter[0][1]?.name ? evolutionInitialFilter[0][1]?.name : evolutionInitialFilter[0][1] ?  evolutionInitialFilter[0][1] : "Null",
           evolutionInitialFilter[1] != undefined ||  evolutionInitialFilter[1] != null ? evolutionInitialFilter[1][1]?.name ? evolutionInitialFilter[1][1]?.name : evolutionInitialFilter[1][1] ?  evolutionInitialFilter[1][1] : "null" : ""
       ];
-      console.log(evolutionArray1,'aqui')
     if(evolutionArray1[0] === "item"){
       const name = evolutionArray1[1]
       
@@ -164,7 +163,6 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       axios.get(url)
       .then(response => {
          const data = response.data.sprites.default
-         console.log(data)
         setimagensItens2({
           url: data
         })

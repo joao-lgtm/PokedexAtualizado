@@ -2,8 +2,6 @@ import arrow_forwards from "../../assets/arrow_forward_ios.svg"
 import React, { useState, useEffect } from "react";
 
 export function EvolutioRender ({filterEvolution=[],images=[],forms=[],imagesForms=[],methodLevels=[],imagensItens1,imagensItens2,imagensItens3}){
-
-console.log( filterEvolution,images,forms,imagesForms)
 return (
     <div className="evolutions-and-forms">
     <div className="evolutions">

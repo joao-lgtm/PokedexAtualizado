@@ -43,7 +43,10 @@ export function Home() {
             <ListPokemon key={pokemon.id} id={pokemon.id} name={pokemon.name} sprite={pokemon.sprites.front_default}/>
           ))}
         </ul>
-        {isLoading && <div className="Loading-content" ><Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> </div>}
+        {isLoading && <div className="Loading-content" >
+          <div className='tet'></div>
+          <Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> 
+          </div>}
         {!isLoading && (
           <button onClick={() => setPokemonDisplayCount(pokemonDisplayCount + 50)}>
             Carregar mais

@@ -1,8 +1,8 @@
 .evolutions-and-forms{
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
     width: 100%;
-    margin-top: 1.25rem;
 }
 .Name{
     display: flex;
@@ -60,6 +60,6 @@
 .evolution-container{
     display: flex;
     margin-top: 1.25rem;
-    width: 100%;
     justify-content: center;
+    flex-wrap: wrap;
 }

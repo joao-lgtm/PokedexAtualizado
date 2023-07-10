@@ -16,7 +16,6 @@ export function Modal({ onClose ,id}) {
       const   req   = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}/`);
       const   response = await axios.get(req.data.evolution_chain.url);
       const { data: species } = await axios.get(data.species.url);
-      console.log(species,'req');
       let color;
       switch (species.color.name) {
             case 'white':
@@ -84,7 +83,7 @@ export function Modal({ onClose ,id}) {
 
   return (
     <>
-    {isLoading && <div className="Loading-content" ><Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> </div>}
+    {isLoading && <><div className='tet'></div><div className="Loading-content" ><Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> </div> </>}
     
     {!isLoading && <div className="modal">
       <div className='tet'></div>
