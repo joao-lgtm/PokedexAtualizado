@@ -48,9 +48,11 @@ export function Home() {
           <Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> 
           </div>}
         {!isLoading && (
-          <button onClick={() => setPokemonDisplayCount(pokemonDisplayCount + 50)}>
-            Carregar mais
-          </button>
+          <div className='loading-area'>
+            <button className='button-loading' onClick={() => setPokemonDisplayCount(pokemonDisplayCount + 50)}>
+              Carregar mais
+            </button>
+          </div>
         )}
       </div>
     </main>

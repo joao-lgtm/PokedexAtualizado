@@ -51,12 +51,12 @@ export function TextFromPokedex( species ) {
         </select>
         {filters.length > 0 && (
           <select
-            name="language"
-            id="language"
+            name='language'
+            id='language'
             value={texto1}
             onChange={handleLanguageChange}
           >
-            <option value="">Selecione...</option>
+            <option value=''>Selecione...</option>
             {filters.map((element, index) => (
               <option key={index} value={element.language.name}>
                 {element.language.name}
@@ -64,13 +64,10 @@ export function TextFromPokedex( species ) {
             ))}
           </select>
         )}
-        <button type="submit">Enviar</button>
+        <button type='submit'>Enviar</button>
       </form>
 
-
-
-
-      <div>
+      <div className=''>
             <span>{ textoInfo && textoInfo[0].flavor_text}</span>
       </div>
     </>

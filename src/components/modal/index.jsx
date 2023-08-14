@@ -85,10 +85,10 @@ export function Modal({ onClose ,id}) {
     <>
     {isLoading && <><div className='tet'></div><div className="Loading-content" ><Lottie className="animation-Loading" animationData={pokebalLoading} loop={true} /> </div> </>}
     
-    {!isLoading && <div className="modal">
+    {!isLoading && <div className='modal'>
       <div className='tet'></div>
-      <div className="modal-content" style={{backgroundColor: `${pokemon.color}` }}>
-        <div className="container-card">
+      <div className='modal-content' style={{backgroundColor: `${pokemon.color}` }}>
+        <div className='container-card'>
           <div className='close'>
             <img className='back-arrow'
               src={backArrow} 

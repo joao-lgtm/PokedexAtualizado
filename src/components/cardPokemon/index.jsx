@@ -64,24 +64,24 @@ export function Card({
   }
 
   return (
-    <div className="card">
-      <div className="card-body">
-        <h1 className="card-title">{name}</h1>
-        <div className="sprite">
-          <img className="sprite-img" src={sprite} alt="Foto-1" />
+    <div className='card'>
+      <div className='card-body'>
+        <h1 className='card-title'>{name}</h1>
+        <div className='sprite'>
+          <img className='sprite-img' src={sprite} alt='Foto-1' />
         </div>
-        <div className="info-pokemon">
-          <div className="type">
+        <div className='info-pokemon'>
+          <div className='type'>
             {types.map((type) => (
               <img
                 key={type.type.name}
                 src={`src/assets/${type.type.name}.png`}
-                className="type-img"
+                className='type-img'
                 alt={type.type.name}
               />
             ))}
           </div>
-          <div className="menu-info">
+          <div className='menu-info'>
             <ul>
               <li value={1} onClick={e => setSinal(e.target.value)}>
                 status
