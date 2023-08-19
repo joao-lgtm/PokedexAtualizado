@@ -1,7 +1,19 @@
-import arrow_forwards from '../../assets/arrow_forward_ios.svg'
+import { ArrowForward } from '../../assets/arrow-forward';
 import React, { useState, useEffect } from 'react';
 
-export function EvolutioRender ({filterEvolution=[],images=[],forms=[],imagesForms=[],methodLevels=[],imagensItens1,imagensItens2,imagensItens3}){
+interface EvolutionRenderProps {
+  filterEvolution: string[];
+  images: string[];
+  forms: string[];
+  imagesForms: string[];
+  methodLevels: string[][]| number[][];
+  imagensItens1: { url: string };
+  imagensItens2: { url: string };
+  imagensItens3: { url: string };
+}
+
+
+export function EvolutioRender ({filterEvolution=[],images=[],forms=[],imagesForms=[],methodLevels=[],imagensItens1,imagensItens2,imagensItens3}:EvolutionRenderProps){
 return (
     <div className='evolutions-and-forms'>
     <div className='evolutions'>
@@ -25,7 +37,7 @@ return (
               <span>{methodLevels[0][2]  === 'dark' ?` ${methodLevels[0][1]} membro do time ${methodLevels[0][2]}`: methodLevels[0][0] === 'gender' ? methodLevels[0][1] == 2 ? 'Man' : 'feminino': methodLevels[0][0] === 'item' || methodLevels[0][0] === 'held_item' ? imagensItens1 && <div className='img-itens'><img src={imagensItens1.url} alt='imagem itens'/><span>{methodLevels[0][1]}</span></div>: methodLevels[0][1]}</span>
               <span>{methodLevels[0][2] === 'use-item' ? '' :methodLevels[0][2]} </span>
             </div>
-             <img style={{ width: '1.875rem' }} src={arrow_forwards} alt='arrow' />
+            <ArrowForward/>
             </div>
            }
            {index !== filterEvolution.length - 1 &&  name !== 'eevee' &&  index === 1 &&
@@ -36,7 +48,7 @@ return (
               <span>{methodLevels[1][2]  === 'dark' ?` ${methodLevels[1][1]} membro do time ${methodLevels[1][2]}`: methodLevels[1][0] === 'gender' ? methodLevels[1][1] == 2 ? 'Man' : 'feminino': methodLevels[1][0] === 'item' || methodLevels[1][0] === 'held_item'? imagensItens2 && <div className='img-itens'><img src={imagensItens2.url} alt='imagem itens'/> <span>{methodLevels[1][1]}</span></div> : methodLevels[1][1]}</span>
               <span>{methodLevels[1][2]  === 'use-item' ? '' :methodLevels[1][2]}</span>
             </div>
-            <img style={{ width: '1.875rem'}} src={arrow_forwards} alt='arrow' />
+            <ArrowForward/>
             </div>
             }
             {index !== filterEvolution.length - 1 &&  name !== 'eevee' &&  index === 2 &&
@@ -47,7 +59,7 @@ return (
               <span>{methodLevels[2][2]  === 'dark' ?` ${methodLevels[2][1]} membro do time ${methodLevels[2][2]}`: methodLevels[2][0] === 'gender' ? methodLevels[2][1] == 2 ? 'Man' : 'feminino': methodLevels[2][0] === 'item'  || methodLevels[2][0] === 'held_item'  ?imagensItens3 && <div className='img-itens'><img src={imagensItens3.url} alt='imagem itens'/> <span>{methodLevels[2][1]}</span></div> : methodLevels[2][1]}</span>
               <span>{methodLevels[2][2] === 'use-item' ? '' :methodLevels[2][2]} </span>
             </div>
-            <img style={{ width: '1.875rem'}} src={arrow_forwards} alt='arrow' />
+            <ArrowForward/>
             </div>
             }
           </React.Fragment>

@@ -8,6 +8,7 @@ export interface CardProps {
     moves: string[];
     weight: string;
     height: string;
+    baseExperience: number;
     abilities: string[];
     stats: {
       name: string;

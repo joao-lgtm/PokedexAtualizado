@@ -2,11 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './style.css';
 import { Card } from '../../components/cardPokemon';
-import backArrow from '../../assets/arrow_back3.svg';
 import Lottie from 'lottie-react';
 import pokebalLoading from '../../assets/pokebalLoading.json'
+import { CardProps } from '../../types';
+import { ArrowBack } from '../../assets/arrow-back';
+
+
+
 export function Modal({ onClose ,id}) {
-  const [pokemon, setPokemon] = useState({});
+  const [pokemon, setPokemon] = useState<CardProps>();
   const [isLoading, setIsLoading] = useState(false);
 
 
@@ -49,7 +53,9 @@ export function Modal({ onClose ,id}) {
               color = '#DA7843';
             break;
       }
+      
       setPokemon({
+        id: id,
         name: data.name,
         sprite: data.sprites.other['official-artwork'].front_default,
         types: data.types,
@@ -67,6 +73,7 @@ export function Modal({ onClose ,id}) {
         varieties: req.data.varieties,
         species: species.flavor_text_entries
       });
+      console.log(pokemon,'aqui')
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -87,15 +94,12 @@ export function Modal({ onClose ,id}) {
     
     {!isLoading && <div className='modal'>
       <div className='tet'></div>
-      <div className='modal-content' style={{backgroundColor: `${pokemon.color}` }}>
+      <div className='modal-content' style={{backgroundColor: `${pokemon?.color}` }}>
         <div className='container-card'>
           <div className='close'>
-            <img className='back-arrow'
-              src={backArrow} 
-              onClick={onClose}
-              ></img>
+              <ArrowBack className={'back-arrow'} onclose={onClose}/>
             </div>
-          {pokemon.name && <Card {...pokemon} key={pokemon.name} />}
+          {pokemon?.name && <Card {...pokemon} key={pokemon.name} />}
         </div>
       </div> 
     </div>

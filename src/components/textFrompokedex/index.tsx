@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState , ChangeEvent, FormEvent } from "react";
+import { textInfo, textpokedex } from "../../types";
 
-export function TextFromPokedex( species ) {
-  const textPokedex = species.species;
-  const [texto, setTexto] = useState("");
-  const [texto1, setTexto1] = useState("");
-  const [textoInfo, setTextoInfo] = useState();
+export function TextFromPokedex( {species} ) {
+  const textPokedex = species;
+  const [texto, setTexto] = useState<string>("");
+  const [texto1, setTexto1] = useState<string>("");
+  const [textoInfo, setTextoInfo] = useState<textInfo>();
   const [filters, setFilters] = useState([]);
 
-  const handleVersionChange = (event) => {
+  const handleVersionChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedVersion = event.target.value;
     setTexto(selectedVersion);
     const filteredLanguages = textPokedex.filter(
@@ -16,12 +17,12 @@ export function TextFromPokedex( species ) {
     setFilters(filteredLanguages);
   };
 
-  const handleLanguageChange = (event) => {
+  const handleLanguageChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedLanguage = event.target.value;
     setTexto1(selectedLanguage);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
     const filteredLanguages = textPokedex.filter(
@@ -57,7 +58,7 @@ export function TextFromPokedex( species ) {
             onChange={handleLanguageChange}
           >
             <option value=''>Selecione...</option>
-            {filters.map((element, index) => (
+            {filters.map((element: textpokedex, index) => (
               <option key={index} value={element.language.name}>
                 {element.language.name}
               </option>

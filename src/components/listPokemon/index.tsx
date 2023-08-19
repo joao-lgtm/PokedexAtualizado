@@ -1,9 +1,9 @@
 import './style.css'
 import React, { useState,useEffect } from 'react'
-import { Modal } from '../../components/modal';
+import { Modal } from '../modal';
 
 export function ListPokemon({id,name, sprite}){
-    const [modalOpen, setModalOpen] = useState();
+    const [modalOpen, setModalOpen] = useState<boolean>();
 
     function openModal() {
         setModalOpen(true);

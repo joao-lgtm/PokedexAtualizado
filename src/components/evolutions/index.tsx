@@ -3,15 +3,28 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { EvolutioRender } from '../evolutionRender';
 
+
+interface pokemon {
+  is_default: boolean;
+  pokemon:{
+          url: string;
+          name: string;
+  };
+}
+
+interface image {
+  url: string;
+}
+
 export function EvolutionAndForms({method_evolution,  varieties }) {
-  const [evolution, setEvolution]       = useState([]);
-  const [methodLevels, setMethodLevels] = useState([]);
-  const [images, setImages]             = useState([]);
-  const [forms, setForms]               = useState([]);
-  const [imagesForms, setImagesForms]   = useState([]);
-  const [imagensItens1, setimagensItens1]   = useState();
-  const [imagensItens2, setimagensItens2]   = useState();
-  const [imagensItens3, setimagensItens3]   = useState();
+  const [evolution, setEvolution]       = useState<string[]>([]);
+  const [methodLevels, setMethodLevels] = useState<string[][]>([]);
+  const [images, setImages]             = useState<string[]>([]);
+  const [forms, setForms]               = useState<string[]>([]);
+  const [imagesForms, setImagesForms]   = useState<string[]>([]);
+  const [imagensItens1, setimagensItens1]   = useState<image>({url: ''});
+  const [imagensItens2, setimagensItens2]   = useState<image>({url: ''});
+  const [imagensItens3, setimagensItens3]   = useState<image>({url: ''});
 
 
 
@@ -20,15 +33,15 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       try {
         const responses = await Promise.all(urls.map(url => axios.get(url)));
         const sprites   = responses.map(response => response.data.sprites.other['official-artwork'].front_default);
-        const newImages = sprites.map((sprite) => sprite || 'valor padrão');
+        const newImages:string[] = sprites.map((sprite) => sprite || 'valor padrão');
         setImagesForms(newImages);
       } catch (error) {
         console.error(error);
       }
     };
 
-    const urlsForms = [];
-    varieties.forEach((pokemon) => {
+    const urlsForms:string[] = [];
+    varieties.forEach((pokemon:pokemon) => {
       if (pokemon.is_default === false) {
         urlsForms.push(pokemon.pokemon.url);
       }
@@ -40,7 +53,7 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       try {
         const responses = await Promise.all(urls.map(url => axios.get(url)));
         const sprites   = responses.map(response => response.data.sprites.other['official-artwork'].front_default);
-        const newImages = sprites.map((sprite) => sprite || 'valor padrão');
+        const newImages:string[] = sprites.map((sprite:string) => sprite || 'valor padrão');
         setImages(newImages);
         
       } catch (error) {
@@ -48,7 +61,7 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
       }
     };
     
-    const urls = [];
+    const urls: string[] = [];
 
     if (method_evolution) {
       urls.push(`https://pokeapi.co/api/v2/pokemon/${method_evolution.chain.species.name}`);
@@ -73,11 +86,11 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
   }, [method_evolution, varieties]);
 
   useEffect(() => {
-    let evolutionArray1
-    let evolutionArray2
-    let evolutionArray3
-    const te = [];
-    varieties.forEach((forms2, object) => {
+    let evolutionArray1:any
+    let evolutionArray2:any
+    let evolutionArray3:any
+    const te:string[] = [];
+    varieties.forEach((forms2:pokemon, object) => {
       if (forms2.is_default === false) {
         te.push(forms2.pokemon.name);
         setForms([
@@ -89,8 +102,8 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
     });
   
     if (method_evolution?.chain?.species.name === 'eevee') {
-      const evolutions  = method_evolution?.chain?.evolves_to || [];
-      const names       = evolutions.map(evolution => evolution.species.name);
+      const evolutions:string[]  = method_evolution?.chain?.evolves_to || [];
+      const names   = evolutions.map((evolution:any) => evolution.species.name);
   
       setEvolution([
         method_evolution?.chain?.species.name,
@@ -111,7 +124,7 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
 
       if(evolutionInitial != undefined){
       const EvolutionInitialObject = Object.entries(evolutionInitial)
-      const evolutionInitialFilter = EvolutionInitialObject.filter(itens => itens[1] != null && itens[1] != false)
+      const evolutionInitialFilter:any = EvolutionInitialObject.filter(itens => itens[1] != null && itens[1] != false)
       
       evolutionArray1 = [
           evolutionInitialFilter[0][0] ? evolutionInitialFilter[0][0] : 'null',
@@ -147,7 +160,7 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
     }
     if(evolutionMiddle != undefined){
       const EvolutionMiddleObject = Object.entries(evolutionMiddle)
-      const evolutionMiddleFilter = EvolutionMiddleObject.filter(itens => itens[1] != null && itens[1] != false)
+      const evolutionMiddleFilter:any  = EvolutionMiddleObject.filter(itens => itens[1] != null && itens[1] != false)
       evolutionArray2 = [
         evolutionMiddleFilter[0][0] ? evolutionMiddleFilter[0][0] : 'null',
         evolutionMiddleFilter[0][1]?.name ? evolutionMiddleFilter[0][1]?.name : evolutionMiddleFilter[0][1] ?  evolutionMiddleFilter[0][1] : 'null',
@@ -173,7 +186,7 @@ export function EvolutionAndForms({method_evolution,  varieties }) {
 
     if(evolutionFinal != undefined){
       const evolutionFinalObject = Object.entries(evolutionFinal)
-      const evolutionFinalFilter = evolutionFinalObject.filter(itens => itens[1] != null && itens[1] != false)
+      const evolutionFinalFilter:any = evolutionFinalObject.filter(itens => itens[1] != null && itens[1] != false)
       
       evolutionArray3 = [
         evolutionFinalFilter[0][0] ? evolutionFinalFilter[0][0]  : 'null',
