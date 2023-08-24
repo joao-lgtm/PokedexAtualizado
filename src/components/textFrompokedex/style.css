@@ -1,0 +1,49 @@
+
+.form-language{
+    margin-top: 20px;
+}
+
+.version-select{
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.language-select{
+    padding: 7px;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.button-submit{
+    border-radius: 5px;
+    border-style: none;
+    padding: 10px;
+    margin-left: 5px;
+    background-color: brown;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.text{
+    margin-top: 10px;
+    width: 80%;
+    text-align: center;
+    margin: 10px;
+    height: 100px;
+    border: 1px dashed black;
+    padding: 10px;
+}
+
+.submit-text{
+    color:#fff;
+}

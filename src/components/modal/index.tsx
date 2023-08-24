@@ -73,7 +73,6 @@ export function Modal({ onClose ,id}) {
         varieties: req.data.varieties,
         species: species.flavor_text_entries
       });
-      console.log(pokemon,'aqui')
       setIsLoading(false);
     } catch (error) {
       console.error(error);

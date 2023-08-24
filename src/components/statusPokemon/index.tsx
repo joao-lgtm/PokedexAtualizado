@@ -5,7 +5,7 @@ export function Status({stats}){
     return (
         <div className='stat'>
         {stats.map(({ base_stat, stat }) => (
-          <div className='name-stats'>
+          <div key={stat} className='name-stats'>
             <div className='text-stats'>
               <div>
                 <span className='name'>{stat.name} </span>
